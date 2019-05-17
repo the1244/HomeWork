@@ -20,6 +20,12 @@ namespace HomeWork2019.Controllers
             return View(db.客戶資料.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string strSearch)
+        {
+            return View(db.客戶資料.Where(p => p.客戶名稱.Contains(strSearch)));
+        }
+
         // GET: 客戶資料/Details/5
         public ActionResult Details(int? id)
         {
