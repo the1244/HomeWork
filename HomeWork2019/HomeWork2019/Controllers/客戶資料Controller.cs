@@ -115,6 +115,11 @@ namespace HomeWork2019.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult 客戶清單()
+        { 
+            return View(db.View_1.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
