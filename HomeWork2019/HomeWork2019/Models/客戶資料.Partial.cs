@@ -32,9 +32,12 @@ namespace HomeWork2019.Models
         [StringLength(100, ErrorMessage="欄位長度不得大於 100 個字元")]
         public string 地址 { get; set; }
         
+        [EmailAddress]
         [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
         public string Email { get; set; }
-    
+
+        public int IsDelete { get; set; }
+
         public virtual ICollection<客戶銀行資訊> 客戶銀行資訊 { get; set; }
         public virtual ICollection<客戶聯絡人> 客戶聯絡人 { get; set; }
     }

@@ -17,13 +17,13 @@ namespace HomeWork2019.Controllers
         // GET: 客戶資料
         public ActionResult Index()
         {
-            return View(db.客戶資料.ToList());
+            return View(db.客戶資料.Where(p => p.IsDelete == 0));
         }
 
         [HttpPost]
         public ActionResult Index(string strSearch)
         {
-            return View(db.客戶資料.Where(p => p.客戶名稱.Contains(strSearch)));
+            return View(db.客戶資料.Where(p => p.客戶名稱.Contains(strSearch)).Where(p =>p.IsDelete ==0));
         }
 
         // GET: 客戶資料/Details/5
@@ -116,7 +116,8 @@ namespace HomeWork2019.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
+            客戶資料.IsDelete = 1;
+            db.Entry(客戶資料).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
