@@ -56,9 +56,14 @@ namespace HomeWork2019.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.客戶資料.Add(客戶資料);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                客戶資料 客 = db.客戶資料.Where(p => p.IsDelete == 0).FirstOrDefault();
+
+                if (客 != null)
+                {
+                    db.客戶資料.Add(客戶資料);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(客戶資料);

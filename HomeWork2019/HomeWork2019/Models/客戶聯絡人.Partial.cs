@@ -29,6 +29,7 @@ namespace HomeWork2019.Models
         public string Email { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [RegularExpression(@"\d{4}-\d{6}", ErrorMessage = "手機格式錯誤!!!")]
         public string 手機 { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
